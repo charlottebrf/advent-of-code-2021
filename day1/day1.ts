@@ -15,7 +15,7 @@ const createOutput = (item, outcome) => {
 }
 
 try {
-    const data = fs.readFileSync( "input.txt", 'utf8')
+    const data = fs.readFileSync( "sample-input.txt", 'utf8')
     const report = data.split('\n')
     const finalStrings = [];
 
@@ -33,7 +33,12 @@ try {
             finalStrings.push(finalString)
         }
     }
-    console.log(finalStrings)
+      const stringifiedFinalResult = finalStrings.toString()
+      try {
+        fs.writeFileSync("result.txt", stringifiedFinalResult);
+      } catch(err) {
+          console.log('my error', err)
+      }
     }
    catch (err) {
     console.error(err)
